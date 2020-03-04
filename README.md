@@ -17,24 +17,27 @@ Create a web page for users to view recipes related to food specified in a searc
 Upload images of wireframe to cloudinary and add the link here with a description of the specific wireframe.
 
 - [wireframes](https://res.cloudinary.com/ditj5hmta/image/upload/v1583347510/04Mar20_Recipe-Bits_Wireframes_wdahj2.jpg)
-- [react architecture]()
-
-
 
 Define the the React components and the architectural design of your app.
+- [react architecture](https://cloudinary.com/console/c-0f8a4fdacf2146fd4c181123542405/media_library/folders/%2F/asset/699b9f50e65b10fa6a73e3e8ce4aca1c/manage)
 
 ### MVP/PostMVP - 5min
 
 The functionality will then be divided into two separate lists: MPV and PostMVP.  Carefully decided what is placed into your MVP as the client will expect this functionality to be implemented upon project completion.  
 
-#### MVP EXAMPLE
-- Find and use external api 
-- Render data on page 
-- Allow user to interact with the page
+#### MVP - Bronze
+- Find and use external recipe api 
+- Render recipe array data on page based upon the search criteria specified
+- Render selected recipe ingredient listing
+- Render selected recipe image
 
-#### PostMVP EXAMPLE
+### MBP - Silver
+- Find and use external nutrition api
+- Render nutrition graph and summary data for the selected recipe
+- Render nutrition details for the selected recipe
 
-- Add localStorage or firebase for storage
+#### PostMVP - Gold
+- Add localStorage or firebase for users to store viewed recipes
 
 ## Components
 ##### Writing out your components and its descriptions isn't a required part of the proposal but can be helpful.
@@ -43,22 +46,30 @@ Based on the initial logic defined in the previous sections try and breakdown th
 
 | Component | Description | 
 | --- | :---: |  
-| App | This will make the initial data pull and include React Router| 
-| Header | This will render the header include the nav | 
-| Footer | This will render the header include the nav | 
+| App | This will make the initial data pull and include Axios and React Router| 
+| Header | This will render the header |
+| Nav | This will render the navigation links |
+| Sidebar | This will render the food search bar and additonal criteria | 
+| Main | This will render the list of recipes the user can individually select |
+| Image | This will render the image for the selected recipe |
+| Nutrition Summary | This will render the nutrition analysis graph |
+| Nutrition Detail | This will render the nutrition detail list |
+
 
 ## Time Frames
 
-Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe. Also, put a gif at the top of your Readme before you pitch, and you'll get a panda prize.
+Time frames are also key in the development cycle.  You have limited time to code all phases of the application (app).  Your estimates can then be used to evalute app possibilities based on time needed and the actual time you have before app must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe. Also, put a gif at the top of your Readme before you pitch, and you'll get a panda prize.
 
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 6hrs| 7hrs | 7hrs |
-| Working with API | H | 6hrs| 5hrs | 5hrs |
-| Total | H | 12hrs| 10hrs | 10hrs |
+| Adding Form | H | 8hrs| 0hrs | 0hrs |
+| Working with API | H | 6hrs| 0hrs | 0hrs |
+| Creating Components | H | 16hrs| 0hrs | 0hrs |
+| Total | H | 30hrs| 0hrs | 0hrs |
 
 ## Additional Libraries
- Use this section to list all supporting libraries and thier role in the project such as Axios, ReactStrap, D3, etc. 
+ Use this section to list all supporting libraries and their role in the project such as ReactStrap, D3, etc.
+  - Axios 
 
 ## Code Snippet
 
