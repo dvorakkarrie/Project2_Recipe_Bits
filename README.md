@@ -3,18 +3,20 @@
 
 ## Project Description
 
-Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and\or functionality.
+Create a web page for users to view recipes related to food specified in a search bar.  The user can select a recipe and view the ingredient list and nutrition summary link to view further details.
+
+- [api link](https://www.edamam.com/)
 
 ## Project Links
 
-- [github repo]()
+- [github repo](https://dvorakkarrie.github.io/Project2_Recipe_Bits/)
 - [deployment]()
 
 ## Wireframes
 
 Upload images of wireframe to cloudinary and add the link here with a description of the specific wireframe.
 
-- [wireframes]()
+- [wireframes](https://res.cloudinary.com/ditj5hmta/image/upload/v1583347510/04Mar20_Recipe-Bits_Wireframes_wdahj2.jpg)
 - [react architecture]()
 
 
