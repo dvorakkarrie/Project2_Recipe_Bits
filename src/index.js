@@ -5,6 +5,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// import dotenv from 'dotenv'
+// dotenv.config()
+
+
 ReactDOM.render(
     <Router>
         <App />

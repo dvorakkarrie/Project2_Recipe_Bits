@@ -1,9 +1,9 @@
-// Imported React modules
-import React, { useEffect, useState} from 'react';
+// import React, { useEffect, useState} from 'react';
+import React, { Component } from 'react';
 // import {Route, Link, Switch} from 'react-router-dom';
-
 // Imported axios functionality
 import axios from 'axios';
+// import dotenv to secure API
 
 //Import components
 import RecipeList from './RecipeList'
@@ -13,62 +13,78 @@ import './App.css';
 
 // Declared variables for recipe ID and Key
 const recipeID = 'a15fc147';
-const recipeKey = 'c7ae8ff47c0f0234e1772099bfad5baa';
+const recipeKey = 'e3d248a38d6bc2ecdfae3d9d6b9c588e';
 
 // Declared variables for nutrition ID and Key
 // const nutritionID = '9e7c4de7';
 // const nutritionKey = '5f146b0d7ef29c7bd609eefbf6286eb0';
 
-// set up App component as function
-export default function App() {
+// set up App component as class
+class App extends Component {
+  constructor(props) {
+    super(props)
+      this.state = {
+        recipes: [],
+        search: null,
+        currentRecipe: null
+      }
+  }
 
-  // factored code for useState functionality
-  const [recipes, setRecipes] = useState([])
-  const [search, setSearch] = useState('')
-  const [food, setFood] = useState('tacos')
+  handleChange = (event) => {
+    console.log('handleChange is running')
+    this.setState({
+      search: event.target.value})
+    console.log('Word is ' + this.state.search)
+  }
 
-  // factored code for useEffect functionality
-  useEffect( () => {
-    getRecipes()
-  }, [food])  // only executing the useEffect when for the initial load.
+  handleSubmit = (event) => {
+    console.log('handleSubmit is running')  
+    event.preventDefault()
+    console.log(this.state.search)
+    this.getRecipes()
+    this.setState({
+      searchRecipes: ''
+    })
+  }
 
-  // Defined getRecipe as constant variable to run recipe api call
-  const getRecipes = () => {
+  getRecipes = () => {
     axios({
       method: 'GET',
-      url: `https://api.edamam.com/search?q=${food}&app_id=${recipeID}&app_key=${recipeKey}&from=0&to=10&calories=591-722&health=alcohol-free`
+      url: `https://api.edamam.com/search?q=${this.state.search}&app_id=${recipeID}&app_key=${recipeKey}&from=0&to=10&calories=591-722&health=alcohol-free`
     })
     .then(response => {
       console.log(response.data.hits)
-      setRecipes(response.data.hits)
+      this.setState({
+        recipes: response.data.hits
+      })
     })
     .catch(error => {
       console.log(error)
     })
   }
-  
-  const handleChange = (e) => {
-    setSearch(e.target.value)
-    console.log(search)
+
+  handleClick = (recipe) => {
+    console.log('handleClick is running')
+    console.log(recipe)
+    this.setState({
+      currentRecipe: recipe
+    })
   }
 
-  const getRecipeList = (e) => {
-    e.preventDefault()
-    setFood(search)
-    setSearch('')
-  }
-
+render() {
   return (
     <div className="App">
       <h1>Recipe Bits</h1>
       <nav>Home</nav>
-      <form className='search-form' onSubmit={getRecipeList}>
+      <form className='search-form' >
         <input type='text' className='search-box' 
-          placeholder="i.e. chicken, ice cream" onChange={handleChange} 
-          value={search}></input>         
-        <button type='button' className='search-button'>Search</button>        
+          placeholder="i.e. chicken, ice cream" onChange={this.handleChange} 
+          value={this.searchRecipe}></input>         
+        <button type='button' className='search-button' 
+          onClick={this.handleSubmit}>Search
+        </button>        
       </form>
-        {recipes && recipes.map((item, index) => (
+        {this.state.recipes && this.state.recipes.map((item, index) => (
           <div key={index} className='search-results'>
             <RecipeList 
               title={item.recipe.label}
@@ -82,4 +98,7 @@ export default function App() {
     </div>
   );
 }
+}
+ 
+export default App;
 
