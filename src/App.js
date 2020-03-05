@@ -1,9 +1,12 @@
 // Imported React modules
-import React, { Component } from 'react';
+import React, { useEffect, useState} from 'react';
 // import {Route, Link, Switch} from 'react-router-dom';
 
 // Imported axios functionality
 import axios from 'axios';
+
+//Import components
+import RecipeList from './RecipeList'
 
 // Imported App css file
 import './App.css';
@@ -16,50 +19,67 @@ const recipeKey = 'c7ae8ff47c0f0234e1772099bfad5baa';
 // const nutritionID = '9e7c4de7';
 // const nutritionKey = '5f146b0d7ef29c7bd609eefbf6286eb0';
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-      this.state = {
-        recipes: [],
-        currentRecipe: null
-      }
-    }
+// set up App component as function
+export default function App() {
 
-  componentDidMount() {
-    this.getRecipes()
-  }
+  // factored code for useState functionality
+  const [recipes, setRecipes] = useState([])
+  const [search, setSearch] = useState('')
+  const [food, setFood] = useState('tacos')
 
-  getRecipes() {
+  // factored code for useEffect functionality
+  useEffect( () => {
+    getRecipes()
+  }, [food])  // only executing the useEffect when for the initial load.
+
+  // Defined getRecipe as constant variable to run recipe api call
+  const getRecipes = () => {
     axios({
       method: 'GET',
-      url: `https://api.edamam.com/search?q=chicken&app_id=${recipeID}&app_key=${recipeKey}&from=0&to=3&calories=591-722&health=alcohol-free`
+      url: `https://api.edamam.com/search?q=${food}&app_id=${recipeID}&app_key=${recipeKey}&from=0&to=10&calories=591-722&health=alcohol-free`
     })
     .then(response => {
       console.log(response.data.hits)
-      this.setState({recipes: response.data.hits})
-      console.log(this.state.recipes)
+      setRecipes(response.data.hits)
     })
     .catch(error => {
       console.log(error)
     })
   }
-
-  render() {
-    return (
-      <div className="App">
-        <h1>Recipe Bits</h1>
-        <form className='recipe-form'>
-          <input type='text' className='recipe-search' placeholder="i.e. chicken, broccoli, ice cream"></input>
-          <button type='button' className='recipe-button'>Search</button>
-        </form>
-        {this.state.recipes && this.state.recipes.map((recipe, index) => {
-          return (
-            <div key={index} className='recipeList'>Image</div>
-          )
-        })}
-      </div>
-    );
-  }
-}
   
-export default App;
+  const handleChange = (e) => {
+    setSearch(e.target.value)
+    console.log(search)
+  }
+
+  const getRecipeList = (e) => {
+    e.preventDefault()
+    setFood(search)
+    setSearch('')
+  }
+
+  return (
+    <div className="App">
+      <h1>Recipe Bits</h1>
+      <nav>Home</nav>
+      <form className='search-form' onSubmit={getRecipeList}>
+        <input type='text' className='search-box' 
+          placeholder="i.e. chicken, ice cream" onChange={handleChange} 
+          value={search}></input>         
+        <button type='button' className='search-button'>Search</button>        
+      </form>
+        {recipes && recipes.map((item, index) => (
+          <div key={index} className='search-results'>
+            <RecipeList 
+              title={item.recipe.label}
+              calories={item.recipe.calories}
+              image={item.recipe.image}
+              ingredients={item.recipe.ingredients}
+            />
+          </div>
+        )
+      )}
+    </div>
+  );
+}
+
