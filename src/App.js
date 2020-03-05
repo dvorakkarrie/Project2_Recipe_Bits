@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 //Import components
+import Header from './Header'
 import RecipeList from './RecipeList'
 
 // Imported App css file
@@ -59,18 +60,18 @@ class App extends Component {
     })
   }
 
-  handleClick = (recipe) => {           // This will display only one selected recipe.
+  handleClick = (item) => {           // This will display only one selected recipe.
     this.setState({
-      currentRecipe: recipe             // This will assign the selected recipe to the currentRecipe variable.
+      currentRecipe: item             // This will assign the selected recipe to the currentRecipe variable.
     })
+    console.log(item)
   }
 
   render() {
     return (
       <div className="App">
-        <h1>Recipe Bits</h1>
-        <nav>Home</nav>
-        <form className='search-form' >
+        <Header />
+        <form className='search-form' onSubmit={this.handleSubmit}>
           <input type='text' className='search-box' 
             placeholder="i.e. chicken, ice cream" onChange={this.handleChange} 
             value={this.state.searchText}>{this.state.value}</input>         
@@ -79,7 +80,8 @@ class App extends Component {
           </button>        
         </form>
           {this.state.recipes && this.state.recipes.map((item, index) => (
-            <div key={index} className='search-results'>
+            <div key={index} className='search-results' 
+              onClick={() => this.handleClick(item)}>
               <RecipeList 
                 title={item.recipe.label}
                 calories={item.recipe.calories}
