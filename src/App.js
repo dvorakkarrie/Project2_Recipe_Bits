@@ -28,17 +28,33 @@ class App extends Component {
       this.state = {
         recipes: [],                     // This will display recipes from the Edamam API call.
         searchText: '',                  // This will hold search criteria entered by the user.
+        caloriesFrom: 0,
+        caloriesTo: 1000,
         currentRecipe: null              // This will hold the recipe selected from the recipes array.
       }
   }
 
-  handleChange = (event) => {    
-    console.log('clicked')        // This function will update the search variable.
+  handleChangeSearch = (event) => {       // This function will update the search variable.
     this.setState({
-      searchText: event.target.value})   // This will assign the user's entered data to the search variable.
+      searchText: event.target.value      // This will assign the user's entered data to the search variable.
+    })   
   }
 
-  handleSubmit = (event) => {           // This will trigger the API call to get recipes based upon searchRecipe value and subsequently clear the value.
+  handleChangeCaloriesFrom = (event) => {
+    console.log(event)
+    this.setState({
+      caloriesFrom: event.target.value * 10
+    })
+  }
+
+  handleChangeCaloriesTo = (event) => {
+    console.log(event)
+    this.setState({
+      caloriesTo: event.target.value * 10
+    })
+  }
+
+  handleSubmitSearch = (event) => {           // This will trigger the API call to get recipes based upon searchRecipe value and subsequently clear the value.
     event.preventDefault()              // This will prevent this function from refreshing.
     this.getRecipes()                   // This will trigger the getRecipe function to send an API call to Edamam.
     this.setState({
@@ -49,7 +65,7 @@ class App extends Component {
   getRecipes = () => {                  // This send the API call to Edamam to retrieve the requested recipes.
     axios({
       method: 'GET',
-      url: `https://api.edamam.com/search?q=${this.state.searchText}&app_id=${recipeID}&app_key=${recipeKey}&from=0&to=10&calories=591-722&health=alcohol-free`
+      url: `https://api.edamam.com/search?q=${this.state.searchText}&app_id=${recipeID}&app_key=${recipeKey}&from=0&to=10&calories=${this.state.caloriesFrom}-${this.state.caloriesTo}`
     })
     .then(response => {
       console.log(response.data.hits)
@@ -62,7 +78,8 @@ class App extends Component {
     })
   }
 
-  handleClick = (item) => {           // This will display only one selected recipe.
+  handleClick = (item) => { 
+    console.log('clicked event')          // This will display only one selected recipe.
     this.setState({
       currentRecipe: item             // This will assign the selected recipe to the currentRecipe variable.
     })
@@ -73,11 +90,12 @@ class App extends Component {
 
     const recipeList = this.state.recipes.map((item, index) => {
       return (
-        <div key={index} className='search-results' 
-        onClick={() => this.handleClick(item)}>
+        <div key={index} className='search-results'>
         <RecipeList 
+          handleClick={this.handleClick}
+          selectedRecipe={item.recipe}
           title={item.recipe.label}
-          calories={item.recipe.calories}
+          calories={Math.floor((item.recipe.calories/item.recipe.yield)/10)}
           image={item.recipe.image}
           ingredients={item.recipe.ingredients}
         />
@@ -89,8 +107,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <Sidbar 
-          handleChange={this.handleChange} 
-          handleSubmit={this.handleSubmit}
+          handleChangeSearch={this.handleChangeSearch} 
+          handleChangeCaloriesFrom={this.handleChangeCaloriesFrom}
+          handleChangeCaloriesTo={this.handleChangeCaloriesTo}
+          handleSubmitSearch={this.handleSubmitSearch}
         />
         <div>
           {recipeList}

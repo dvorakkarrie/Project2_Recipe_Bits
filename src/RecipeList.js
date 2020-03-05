@@ -1,17 +1,17 @@
 import React from 'react'
 
-const RecipeList = ({title,calories,image,ingredients}) => {
+const RecipeList = (props) => {
     return (
-        <div>
-            <h1>{title}</h1>
-            <ul>{ingredients.map((ingredient, index) => (
+        <div onClick={() => props.handleClick(props.selectedRecipe)}>
+            <h1>{props.title}</h1>
+            <ul>{props.ingredients.map((ingredient, index) => (
                 <li key={index}>
                     {ingredient.text}
                 </li>
             ))}
             </ul>
-            <p>Total calories: {calories}</p>
-            <img src={image} alt={title}></img>
+            <p>Total calories (per yield): {props.calories}</p>
+            <img src={props.image} alt={props.title}></img>
         </div>
     )
 }
