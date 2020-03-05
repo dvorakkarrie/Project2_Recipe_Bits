@@ -8,6 +8,7 @@ import axios from 'axios';
 //Import components
 import Header from './Header'
 import RecipeList from './RecipeList'
+import Sidbar from './Sidebar'
 
 // Imported App css file
 import './App.css';
@@ -31,7 +32,8 @@ class App extends Component {
       }
   }
 
-  handleChange = (event) => {            // This function will update the search variable.
+  handleChange = (event) => {    
+    console.log('clicked')        // This function will update the search variable.
     this.setState({
       searchText: event.target.value})   // This will assign the user's entered data to the search variable.
   }
@@ -68,29 +70,31 @@ class App extends Component {
   }
 
   render() {
+
+    const recipeList = this.state.recipes.map((item, index) => {
+      return (
+        <div key={index} className='search-results' 
+        onClick={() => this.handleClick(item)}>
+        <RecipeList 
+          title={item.recipe.label}
+          calories={item.recipe.calories}
+          image={item.recipe.image}
+          ingredients={item.recipe.ingredients}
+        />
+      </div>
+      )
+    })
+
     return (
       <div className="App">
         <Header />
-        <form className='search-form' onSubmit={this.handleSubmit}>
-          <input type='text' className='search-box' 
-            placeholder="i.e. chicken, ice cream" onChange={this.handleChange} 
-            value={this.state.searchText}>{this.state.value}</input>         
-          <button type='button' className='search-button' 
-            onClick={this.handleSubmit}>Search
-          </button>        
-        </form>
-          {this.state.recipes && this.state.recipes.map((item, index) => (
-            <div key={index} className='search-results' 
-              onClick={() => this.handleClick(item)}>
-              <RecipeList 
-                title={item.recipe.label}
-                calories={item.recipe.calories}
-                image={item.recipe.image}
-                ingredients={item.recipe.ingredients}
-              />
-            </div>
-          )
-        )}
+        <Sidbar 
+          handleChange={this.handleChange} 
+          handleSubmit={this.handleSubmit}
+        />
+        <div>
+          {recipeList}
+        </div>
       </div>
     );
   }
