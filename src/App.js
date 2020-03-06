@@ -8,7 +8,7 @@ import axios from 'axios';
 //Import components
 import Header from './Header'
 import RecipeList from './RecipeList'
-import Sidbar from './Sidebar'
+import Search from './Search'
 
 // Imported App css file
 import './App.css';
@@ -30,7 +30,6 @@ class App extends Component {
         searchText: '',                  // This will hold search criteria entered by the user.
         caloriesFrom: 0,
         caloriesTo: 1000,
-        currentRecipe: null              // This will hold the recipe selected from the recipes array.
       }
   }
 
@@ -41,20 +40,18 @@ class App extends Component {
   }
 
   handleChangeCaloriesFrom = (event) => {
-    console.log(event)
     this.setState({
       caloriesFrom: event.target.value * 10
     })
   }
 
   handleChangeCaloriesTo = (event) => {
-    console.log(event)
     this.setState({
       caloriesTo: event.target.value * 10
     })
   }
 
-  handleSubmitSearch = (event) => {           // This will trigger the API call to get recipes based upon searchRecipe value and subsequently clear the value.
+  handleSubmitSearch = (event) => {     // This will trigger the API call to get recipes based upon searchRecipe value and subsequently clear the value.
     event.preventDefault()              // This will prevent this function from refreshing.
     this.getRecipes()                   // This will trigger the getRecipe function to send an API call to Edamam.
     this.setState({
@@ -78,20 +75,12 @@ class App extends Component {
     })
   }
 
-  handleClick = (item) => { 
-    console.log('clicked event')          // This will display only one selected recipe.
-    this.setState({
-      currentRecipe: item             // This will assign the selected recipe to the currentRecipe variable.
-    })
-    console.log(item)
-  }
-
   render() {
 
     const recipeList = this.state.recipes.map((item, index) => {
       return (
-        <div key={index} className='search-results'>
-        <RecipeList 
+        <RecipeList
+          key={index}
           handleClick={this.handleClick}
           selectedRecipe={item.recipe}
           title={item.recipe.label}
@@ -99,21 +88,24 @@ class App extends Component {
           image={item.recipe.image}
           ingredients={item.recipe.ingredients}
         />
-      </div>
       )
     })
 
     return (
       <div className="App">
         <Header />
-        <Sidbar 
-          handleChangeSearch={this.handleChangeSearch} 
-          handleChangeCaloriesFrom={this.handleChangeCaloriesFrom}
-          handleChangeCaloriesTo={this.handleChangeCaloriesTo}
-          handleSubmitSearch={this.handleSubmitSearch}
-        />
-        <div>
-          {recipeList}
+        <div className='main-section'>
+          <div className='search-section'>
+            <Search
+              handleChangeSearch={this.handleChangeSearch} 
+              handleChangeCaloriesFrom={this.handleChangeCaloriesFrom}
+              handleChangeCaloriesTo={this.handleChangeCaloriesTo}
+              handleSubmitSearch={this.handleSubmitSearch}
+            />
+          </div>
+          <div className='recipe-section'>
+            {recipeList}
+          </div>
         </div>
       </div>
     );

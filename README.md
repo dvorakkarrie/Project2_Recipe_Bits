@@ -39,6 +39,7 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 #### PostMVP - Gold
 - Add localStorage or firebase for users to store viewed recipes
 - add storage functionality to the search history
+- sliding search sidebar
 
 ## Components
 ##### Writing out your components and its descriptions isn't a required part of the proposal but can be helpful.
@@ -52,6 +53,7 @@ Based on the initial logic defined in the previous sections try and breakdown th
 | Nav | This will render the navigation links |
 | Sidebar | This will render the food search bar and additonal criteria | 
 | Main | This will render the list of recipes the user can individually select |
+
 | Image | This will render the image for the selected recipe |
 | Nutrition Summary | This will render the nutrition analysis graph |
 | Nutrition Detail | This will render the nutrition detail list |
@@ -63,9 +65,9 @@ Time frames are also key in the development cycle.  You have limited time to cod
 
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 8hrs| 0hrs | 0hrs |
-| Working with API | H | 6hrs| 0hrs | 0hrs |
-| Creating Components | H | 16hrs| 0hrs | 0hrs |
+| Adding Form | H | 8hrs| 6hrs | 6hrs |
+| Working with API | H | 6hrs| 10hrs | 10hrs |
+| Creating Components | H | 16hrs| 2hrs | 0hrs |
 | Total | H | 30hrs| 0hrs | 0hrs |
 
 ## Additional Libraries

@@ -1,3 +1,47 @@
+.App {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+}
+.header {
+  background-image: url("https://www.freewebheaders.com/wp-content/gallery/food/italian-foods-website-header-image.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-bottom: 2px rgba(21, 21, 21, 0.5) solid;
+  color: rgb(184, 2, 2);
+  font-family: cursive;
+  font-size: 40px;
+  height: 250px;
+}
+.nav-header {
+  color: green;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 40px 30px;
+  text-align: left;
+}
+.main-section { 
+  display: flex;
+  justify-content: flex-start;
+}
+.search-section {
+  border-right: 2px rgba(21, 21, 21, 0.5) solid;
+  font-size: 18px;
+  height: 100%;
+  overflow: auto;
+  padding: 30px;
+  width: 20%;
+}
+.recipe-section {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 30px;
+  width: 75%;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
