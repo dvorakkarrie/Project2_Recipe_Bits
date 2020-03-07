@@ -1,13 +1,15 @@
 // import React, { useEffect, useState} from 'react';
 import React, { Component } from 'react';
-// import {Route, Link, Switch} from 'react-router-dom';
+import { Link, Redirect, Route, Switch} from 'react-router-dom';
 
 // Imported axios functionality
 import axios from 'axios';
 
 //Import components
 import Header from './Header'
+import NewSearch from './NewSearch'
 import RecipeList from './RecipeList'
+import RecipeDetails from './RecipeDetails'
 import Search from './Search'
 
 // Imported App css file
@@ -79,6 +81,11 @@ class App extends Component {
     })
   }
 
+  refreshPage = () => {
+    console.log('New Start clicked!')
+    window.location.reload(false);
+  }
+
   render() {
 
     const recipeList = this.state.recipes.map((item, index) => {
@@ -98,9 +105,17 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header />
+        <nav>
+          <Link to='/' style={{textDecorationLine: 'none'}}>
+            <Header />
+          </Link>
+        </nav>
         <div className='main-section'>
           <div className='search-section'>
+            <Link to='/'>
+              <NewSearch 
+                refreshPage={this.refreshPage} />
+            </Link>
             <Search
               handleChangeSearch={this.handleChangeSearch} 
               handleChangeCaloriesFrom={this.handleChangeCaloriesFrom}
@@ -114,6 +129,15 @@ class App extends Component {
           <div className='recipe-section'>
             {recipeList}
           </div>
+          <Switch>
+            <Route path="/recipedetails" component={RecipeDetails} />
+            <Route path="/recipedetail" render={() => <Redirect to="/recipedetails" />} />
+            {/* <Route path="/price/:currency" render = { routerProps =>  
+              <Price setPrice = {this.setPrice} {...routerProps} {...this.state} 
+              /> } 
+            /> */}
+            <Route path='*' render={() => <Redirect to='/' />} />
+          </Switch>
         </div>
       </div>
     );

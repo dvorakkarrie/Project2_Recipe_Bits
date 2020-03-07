@@ -23,16 +23,22 @@ class RecipeList extends Component {
         return (
             <div className='recipe-card'>
                 <img className='recipe-images' src={this.props.recipe.image} alt={this.props.recipe.title}></img>
-                <h1>{this.props.recipe.title}</h1>
-                <ul>{this.props.recipe.ingredients.map((ingredient, index) => (
-                <li className='recipe-ingredient-list' key={index}>
-                    {ingredient.text}
+                <h1>{this.props.recipe.label}</h1>
+                <p className='recipe-header'>Ingredients:</p>
+                <ul>{this.props.recipe.ingredientLines.map((ingredient, index) => (
+                    <li className='recipe-ingredient-list' key={index}>
+                    {ingredient}
                     </li> ))}
                 </ul>
-                <p className='recipe-total-calories'>Total calories (per yield):{'  '}
-                    { (Math.floor((this.props.recipe.calories/this.props.recipe.yield)/10))}
+                <p className='recipe-total'>
+                    <span className='recipe-header'>Total calories (per yield):</span>
+                    {(Math.floor((this.props.recipe.calories/this.props.recipe.yield)/10))}
                 </p>  
-                <div onClick={this.handleClick}>Details   
+                <p className='recipe-total'>
+                    <span className='recipe-header'>Total yield (per recipe):</span>
+                    {this.props.recipe.yield}
+                </p>
+                <div onClick={this.handleClick}>  
                     <RecipeDetails recipe={this.state.currentRecipe} />
                 </div>
             </div>

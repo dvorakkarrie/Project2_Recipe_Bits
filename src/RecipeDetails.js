@@ -4,8 +4,9 @@ const RecipeDetails = (props) => {
     console.log(props)
     return(
         <div className='detail-section'>
-            {props.label}
-            <div><a target='_blank' href={props.url} rel="noopener noreferrer">Directions</a></div>
+            <a target='_blank' href={props.recipe.url} rel="noopener noreferrer">
+                Click here for directions
+            </a>
         </div>
     )
 }   

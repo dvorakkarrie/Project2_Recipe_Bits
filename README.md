@@ -50,11 +50,11 @@ Based on the initial logic defined in the previous sections try and breakdown th
 | --- | :---: |  
 | App | This will make the initial data pull and include Axios and React Router| 
 | Header | This will render the header |
-| Nav | This will render the navigation links |
-| Sidebar | This will render the food search bar and additonal criteria | 
-| Main | This will render the list of recipes the user can individually select |
+| NewSearch | This will reset the screen to the home page |
+| Search | This will render the food search bar and additonal criteria | 
+| RecipeList | This will render the list of recipes the user can individually select |
 
-| Image | This will render the image for the selected recipe |
+| RecipeDetails | This will render the details and image for the selected recipe |
 | Nutrition Summary | This will render the nutrition analysis graph |
 | Nutrition Detail | This will render the nutrition detail list |
 
