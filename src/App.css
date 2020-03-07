@@ -1,4 +1,9 @@
+h4 {
+  align-content: left;
+  margin: 0px;
+}
 .App {
+  background-color: rgba(240, 230, 212, 0.15);
   font-family: 'Times New Roman', Times, serif;
   font-size: 18px;
 }
@@ -19,28 +24,79 @@
   font-weight: 600;
   padding: 40px 30px;
   text-align: left;
+  /* visibility: hidden; */
 }
 .main-section { 
   display: flex;
   justify-content: flex-start;
 }
 .search-section {
-  border-right: 2px rgba(21, 21, 21, 0.5) solid;
   font-size: 18px;
   height: 100%;
   overflow: auto;
   padding: 30px;
   width: 20%;
 }
+.search-box:hover, .calories-box:hover {
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
+}
+.calories-box {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  height: 25px;
+  margin: 5px 5px 30px;
+  position: relative;
+  transition: 0.3 all;
+  width: 20%;
+}
+.search-box {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  height: 25px;
+  margin: 5px 0 30px;
+  position: relative;
+  transition: 0.3 all;
+  width: 100%;
+}
+.search-max {
+  font-size: 16px;
+  font-style: italic;
+}
+.search-button {
+  background-color: rgb(184, 2, 2);
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  height: 30px;
+  width: 50%;
+}
 .recipe-section {
+  border-left: 2px rgba(21, 21, 21, 0.5) solid;
+  box-shadow: 40px 40px 80px rgba(240, 230, 212, 0.35);
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 30px;
+  padding: 20px;
   width: 75%;
 }
-
+.recipe-card {
+  background-color: white;
+  border: 2px rgba(140, 70, 140, 0.05) solid;
+  border-radius: 15px;
+  box-shadow: 40px 40px 80px rgba(201, 153, 96, 0.35);
+  height: 700px;
+  margin: 20px;
+  overflow: scroll;
+  padding: 20px;
+  width: 300px;
+  word-wrap: normal;
+}
+.recipe-images {
+  width: 100%;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

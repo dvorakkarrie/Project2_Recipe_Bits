@@ -87,6 +87,7 @@ class App extends Component {
           calories={Math.floor((item.recipe.calories/item.recipe.yield)/10)}
           image={item.recipe.image}
           ingredients={item.recipe.ingredients}
+          url={item.recipe.url}
         />
       )
     })

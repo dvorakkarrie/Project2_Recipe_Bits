@@ -1,8 +1,5 @@
 import React from 'react'
 
-// Imported Search css file
-import './Search.css';
-
 const Search = (props) => {
     return (
         <div>
@@ -11,7 +8,7 @@ const Search = (props) => {
                 <input type='text' className='search-box' 
                     placeholder="i.e. chicken, ice cream" 
                     onChange={props.handleChangeSearch} 
-                    value={props.searchText}>{props.value}
+                    value={props.searchText}>
                 </input>
                 <div>
                     <h4>Calories:</h4>
