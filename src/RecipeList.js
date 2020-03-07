@@ -12,30 +12,29 @@ class RecipeList extends Component {
     handleClick = () => {           // This will display only one selected recipe.
         console.log(this.props.url)
         this.setState({
-          currentRecipe: this.props.selectedRecipe        // This will assign the selected recipe to the currentRecipe variable.
+          currentRecipe: this.props.recipe        // This will assign the selected recipe to the currentRecipe variable.
         })
         console.log(this.state.currentRecipe)
       }
 
     render() {
-        console.log(this.props.selectedRecipe);
+        console.log(this.props.recipe);
         
         return (
             <div className='recipe-card'>
-                <div onClick={this.handleClick}>
-                    <img className='recipe-images' src={this.props.image} alt={this.props.title}></img>
-                    <h1>{this.props.title}</h1>
-                    <ul>{this.props.ingredients.map((ingredient, index) => (
-                    <li key={index}>
-                        {ingredient.text}
-                        </li> ))}
-                    </ul>
-                    <p>Total calories (per yield): {this.props.calories}</p>        
-                    <RecipeDetails
-                        label={this.state.currentRecipe.label} 
-                    />
+                <img className='recipe-images' src={this.props.recipe.image} alt={this.props.recipe.title}></img>
+                <h1>{this.props.recipe.title}</h1>
+                <ul>{this.props.recipe.ingredients.map((ingredient, index) => (
+                <li className='recipe-ingredient-list' key={index}>
+                    {ingredient.text}
+                    </li> ))}
+                </ul>
+                <p className='recipe-total-calories'>Total calories (per yield):{'  '}
+                    { (Math.floor((this.props.recipe.calories/this.props.recipe.yield)/10))}
+                </p>  
+                <div onClick={this.handleClick}>Details   
+                    <RecipeDetails recipe={this.state.currentRecipe} />
                 </div>
-                <div><a target='_blank' href={this.props.url} rel="noopener noreferrer">Directions</a></div>
             </div>
         )
     }      

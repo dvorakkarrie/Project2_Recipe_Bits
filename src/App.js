@@ -86,9 +86,9 @@ class App extends Component {
         <RecipeList
           key={index}
           handleClick={this.handleClick}
-          selectedRecipe={item.recipe}
+          recipe={item.recipe}
           title={item.recipe.label}
-          calories={Math.floor((item.recipe.calories/item.recipe.yield)/10)}
+          calories={item.recipe.calories}
           image={item.recipe.image}
           ingredients={item.recipe.ingredients}
           url={item.recipe.url}

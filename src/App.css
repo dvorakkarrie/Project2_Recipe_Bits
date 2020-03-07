@@ -97,6 +97,12 @@ h4 {
 .recipe-images {
   width: 100%;
 }
+.recipe-total-calories {
+  text-align: center;
+}
+.recipe-ingredient-list {
+  list-style-type: none;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
