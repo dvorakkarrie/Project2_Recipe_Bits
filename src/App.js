@@ -1,6 +1,6 @@
 // import React, { useEffect, useState} from 'react';
 import React, { Component } from 'react';
-import { Link, Redirect, Route, Switch} from 'react-router-dom';
+import { Link, Redirect, Route } from 'react-router-dom';
 
 // Imported axios functionality
 import axios from 'axios';
@@ -9,7 +9,7 @@ import axios from 'axios';
 import Header from './Header'
 import NewSearch from './NewSearch'
 import RecipeList from './RecipeList'
-import RecipeDetails from './RecipeDetails'
+// import RecipeDetails from './RecipeDetails'
 import Search from './Search'
 
 // Imported App css file
@@ -33,7 +33,8 @@ class App extends Component {
         recipes: [],                     // This will display recipes from the Edamam API call.
         searchText: '',                  // This will hold search criteria entered by the user.
         caloriesFrom: 0,
-        caloriesTo: ''
+        caloriesTo: '',
+        isOpen: true
       }
   }
 
@@ -79,11 +80,17 @@ class App extends Component {
       caloriesFrom: null,
       caloriesTo: null
     })
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
   }
 
   refreshPage = () => {
     console.log('New Start clicked!')
     window.location.reload(false);
+    this.setState({
+      isOpen: this.state.isOpen
+    })
   }
 
   render() {
@@ -109,35 +116,29 @@ class App extends Component {
           <Link to='/' style={{textDecorationLine: 'none'}}>
             <Header />
           </Link>
+          
         </nav>
         <div className='main-section'>
-          <div className='search-section'>
+          <div className='sidebar'>
             <Link to='/'>
-              <NewSearch 
-                refreshPage={this.refreshPage} />
+              <NewSearch refreshPage={this.refreshPage} isOpen={this.state.isOpen}/>
             </Link>
-            <Search
-              handleChangeSearch={this.handleChangeSearch} 
-              handleChangeCaloriesFrom={this.handleChangeCaloriesFrom}
-              handleChangeCaloriesTo={this.handleChangeCaloriesTo}
-              handleSubmitSearch={this.handleSubmitSearch}
-              searchText={this.state.searchText}
-              caloriesFrom={this.state.caloriesFrom}
-              caloriesTo={this.state.caloriesTo}
-            />
+            <Route path='*' render={() => <Redirect to='/' />} />
+            <div className='search-section' style={{ visibility: this.state.isOpen ? 'visible' : 'hidden' }}>
+              <Search
+                handleChangeSearch={this.handleChangeSearch} 
+                handleChangeCaloriesFrom={this.handleChangeCaloriesFrom}
+                handleChangeCaloriesTo={this.handleChangeCaloriesTo}
+                handleSubmitSearch={this.handleSubmitSearch}
+                searchText={this.state.searchText}
+                caloriesFrom={this.state.caloriesFrom}
+                caloriesTo={this.state.caloriesTo}
+              />
+            </div>
           </div>
           <div className='recipe-section'>
             {recipeList}
           </div>
-          <Switch>
-            <Route path="/recipedetails" component={RecipeDetails} />
-            <Route path="/recipedetail" render={() => <Redirect to="/recipedetails" />} />
-            {/* <Route path="/price/:currency" render = { routerProps =>  
-              <Price setPrice = {this.setPrice} {...routerProps} {...this.state} 
-              /> } 
-            /> */}
-            <Route path='*' render={() => <Redirect to='/' />} />
-          </Switch>
         </div>
       </div>
     );

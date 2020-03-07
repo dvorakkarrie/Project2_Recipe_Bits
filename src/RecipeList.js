@@ -23,7 +23,7 @@ class RecipeList extends Component {
         return (
             <div className='recipe-card'>
                 <img className='recipe-images' src={this.props.recipe.image} alt={this.props.recipe.title}></img>
-                <h1>{this.props.recipe.label}</h1>
+                <h2>{this.props.recipe.label}</h2>
                 <p className='recipe-header'>Ingredients:</p>
                 <ul>{this.props.recipe.ingredientLines.map((ingredient, index) => (
                     <li className='recipe-ingredient-list' key={index}>

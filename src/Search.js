@@ -5,7 +5,7 @@ const Search = (props) => {
         console.log(props)
         return (
             <div>
-                <form>
+                <form onSubmit={props.handleSubmitSearch}>
                     <h4>List ingredients:</h4>
                     <input type='text' className='search-box' 
                         placeholder="i.e. chicken, ice cream" 
@@ -17,7 +17,7 @@ const Search = (props) => {
                             placeholder='From' 
                             onChange={props.handleChangeCaloriesFrom} 
                             value={props.caloriesFrom || ''}>
-                                {/* {this.props.caloriesFrom} */}
+                                {props.value}
                         </input>
                         <input type='text' className='calories-box' 
                             placeholder='To' 
@@ -30,7 +30,8 @@ const Search = (props) => {
                     <button type='button' className='search-button' 
                         onClick={props.handleSubmitSearch}>
                         Search
-                    </button>        
+                    </button>
+                    <input type='submit' style={{display: 'none'}}></input>      
                 </form>
             </div>
         )

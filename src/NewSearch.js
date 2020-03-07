@@ -3,9 +3,10 @@ import React from 'react'
 const NewSearch = (props) => {
     console.log(props)
     return (
-        <nav className='reset-link' onClick={props.refreshPage}>
+        <div className='reset-link' onClick={props.refreshPage} 
+            style={{ visibility: props.isOpen ? 'hidden' : 'visible' }}>
             New Search
-        </nav>
+        </div>
     )
 }
 
