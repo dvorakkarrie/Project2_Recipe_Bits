@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom';
 
 // Imported components
-import RecipeDetails from './RecipeDetails'
+import RecipeURL from './RecipeURL'
 
 // set up RecipeList component as class
 class RecipeList extends Component {
