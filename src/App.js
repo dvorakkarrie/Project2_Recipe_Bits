@@ -1,14 +1,13 @@
 // Imported component functionality
 import React, { Component } from 'react';
-import { Link, Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 // Imported axios functionality
 import axios from 'axios';
 
 // Imported components
+import Home from './Home'
 import Header from './Header'
-import NewSearch from './NewSearch'
-import Search from './Search'
 import RecipeList from './RecipeList'
 import RecipeDetails from './RecipeDetails'
 
@@ -33,6 +32,8 @@ class App extends Component {
         recipeKey: recipeAPIKey,        // This is the recipe API Key used when calling data from Edamam.
         recipes: [],                     // This will display recipes from the Edamam API call.
         searchText: '',                  // This will hold search criteria entered by the user.
+        recipeList: [],
+        showList: true
       }
   }
 
@@ -73,15 +74,21 @@ class App extends Component {
     event.preventDefault()              // This will prevent this function from refreshing.
     this.getRecipes()                   // This will trigger the getRecipe function to send an API call to Edamam.
     this.setState({
-      isOpen: !this.state.isOpen        // This function will close the search side bar and display a New Search link to refresh the page.
+      isOpen: !this.state.isOpen,        // This function will close the search side bar and display a New Search link to refresh the page.
     })
   }
 
-  refreshPage = () => {                 // This function will clear the input text boxes and refresh the page.
-    console.log('New Start clicked!')
-    window.location.reload(false);
+  toggleShowList = () => {
     this.setState({
-      isOpen: this.state.isOpen         // This function will display the search side bar and hide the New Search link.    
+      showList: false
+    })
+  }
+  reset = () => {                 // This function will clear the input text boxes and refresh the page.
+    console.log('New Start clicked!')
+    window.location.reload(false)
+    this.setState({
+      isOpen: this.state.isOpen,         // This function will display the search side bar and hide the New Search link.    
+      showList: true
     })
   }
 
@@ -93,24 +100,23 @@ class App extends Component {
           key={index} 
           index={index}                                                // This is the the recipeList unique key.
           handleClick={this.handleClick}                              // This is mapping the handleClick function to be used in the RecipeList component.
-          recipe={item.recipe}                                        // This is mapping the recipe object to a recipe prop.
+          recipe={item.recipe}  
+          toggleShowList={this.toggleShowList}                                      // This is mapping the recipe object to a recipe prop.
         />
       )
     })
 
     return (                                                       
-      <div className="App">                                    
-        <Header />                                                    
-        <div className='main-section'>
-          <div className='sidebar' style={{ width: this.state.isOpen ? '20%' : '10%' }} >
-            <Link to='/'>
-              <NewSearch refreshPage={this.refreshPage} isOpen={this.state.isOpen}/>
-            </Link>
-            <Route path='*' render={() => <Redirect to='/' />} />
-            <div className='search-section' 
-              style={{ visibility: this.state.isOpen ? 'visible' : 'hidden' }}
-            >
-              <Search
+      <div className="App"> 
+        <Header  /> 
+        
+          <div 
+            style={{ width: this.state.isOpen ? '75%' : '100%' }} >
+            {this.state.showList ? recipeList : null}
+            <Switch>  
+              <Route exact path='/' render={() => <Home 
+                reset={this.reset}
+                isOpen={this.state.isOpen} 
                 minCalories={this.state.minCalories}
                 maxCalories={this.state.maxCalories}
                 maxRecipes={this.state.maxRecipes}
@@ -119,21 +125,15 @@ class App extends Component {
                 handleChangeMinCalories={this.handleChangeMinCalories}
                 handleChangeMaxCalories={this.handleChangeMaxCalories}
                 handleSubmitSearch={this.handleSubmitSearch}
-              />
-            </div>
-          </div>
-          <main>
-            <Switch>
-              <Route exact path='recipedetails/:index' render={(props) => <RecipeDetails {...props} recipedetails={props.match.params.index} /> } />
+
+              />} />
+              <Route exact path='/recipedetails/:index' 
+                render={(props) => <RecipeDetails recipes={this.state.recipes} {...props} 
+                recipedetails={props.match.params.index} /> } />
               <Route path='*' render={() => <Redirect to='/' />} />
             </Switch>
-          </main>
-          <div className='recipe-section' 
-            style={{ width: this.state.isOpen ? '75%' : '100%' }} >
-            {recipeList}
-          </div>
+            </div>
         </div>
-      </div>
     )
   }
 }

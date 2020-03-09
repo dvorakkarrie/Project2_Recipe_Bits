@@ -15,6 +15,7 @@ class RecipeList extends Component {
     }
 
     handleClick = () => {                           // This will display only one selected recipe.
+
         this.setState({
           currentRecipe: this.props.recipe          // This will assign the selected recipe to the currentRecipe variable.
         })
@@ -25,7 +26,7 @@ class RecipeList extends Component {
         return (
             <div className='recipe-card'>
                 <img className='recipe-images' src={this.props.recipe.image} alt={this.props.recipe.label} />
-                <Link to ={`recipedetails/${this.props.index}`} key={this.props.index}> 
+                <Link to ={`recipedetails/${this.props.index}`} key={this.props.index} onClick={this.props.toggleShowList}> 
                     <h2>{this.props.recipe.label}</h2>
                 </Link>
                 <p className='recipe-header'>Ingredients:</p>
