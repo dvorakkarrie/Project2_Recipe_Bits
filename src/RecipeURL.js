@@ -1,6 +1,6 @@
 import React from 'react'
 
-// set up this component as a function that displays the external url in a new tab.
+// Set up this component as a function that displays the external url in a new tab.
 const RecipeURL
  = (props) => {
     return(

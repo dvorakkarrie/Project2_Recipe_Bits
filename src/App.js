@@ -1,8 +1,6 @@
 // Imported component functionality
 import React, { Component } from 'react';
-import { Link, Redirect, Route,
-  // Switch 
-} from 'react-router-dom';
+import { Link, Redirect, Route, Switch } from 'react-router-dom';
 
 // Imported axios functionality
 import axios from 'axios';
@@ -12,7 +10,7 @@ import Header from './Header'
 import NewSearch from './NewSearch'
 import Search from './Search'
 import RecipeList from './RecipeList'
-// import RecipeDetails from './RecipeDetails'
+import RecipeDetails from './RecipeDetails'
 
 // Imported App css file
 import './App.css';
@@ -124,12 +122,12 @@ class App extends Component {
               />
             </div>
           </div>
-          {/* <main>
+          <main>
             <Switch>
-              <Route path='recipelist/:recipes' render={(props) => <RecipeList {...props} recipeList={recipeList} /> } />
-              <Route path='recipedetails/:index' render={(props) => <RecipeDetails {...props} recipedetails={props.match.params.index} /> } />
+              <Route exact path='recipedetails/:index' render={(props) => <RecipeDetails {...props} recipedetails={props.match.params.index} /> } />
+              <Route path='*' render={() => <Redirect to='/' />} />
             </Switch>
-          </main> */}
+          </main>
           <div className='recipe-section' 
             style={{ width: this.state.isOpen ? '75%' : '100%' }} >
             {recipeList}

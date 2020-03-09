@@ -1,14 +1,21 @@
+/* This is used for the web page title in the Header component. */
 h1 {
   margin: 30px;
 }
+
+/* This is used for the Ingredients and Calories sub-titles and coded in the Search component. */
 label {
   font-weight: 800;
 }
+
+/* This foramt the web page and used in the App component. */
 .App {
   background-color: rgba(240, 230, 212, 0.15);
   font-family: 'Times New Roman', Times, serif;
   font-size: 18px;
 }
+
+/* This is used to apply a background image to the header section and used in the Header component. */
 .header {
   background-image: url("https://www.freewebheaders.com/wp-content/gallery/food/italian-foods-website-header-image.jpg");
   background-size: 100%;
@@ -19,10 +26,14 @@ label {
   font-size: 40px;
   height: 200px;
 }
+
+/* This formats the section below the header and coded in the App component. */
 .main-section { 
   display: flex;
   justify-content: flex-start;
 }
+
+/* This formats the New Search link located in the sidebar and coded in the New Search component. */
 .reset-link {
   color: rgb(184, 2, 2);
   font-family: 'Times New Roman', Times, serif;
@@ -32,6 +43,8 @@ label {
   text-align: left;
   visibility: visible;  
 }
+
+/* This formats the sidebar section and coded in the App component. */
 .sidebar {
   font-size: 18px;
   height: 100%;
@@ -39,13 +52,13 @@ label {
   padding: 30px;
   width: 20%;
 }
+
+/* This formats the Search sidebar section and coded in the App component. */
 .search-section {
   visibility: visible;
 }
-.search-box:hover, .calories-box:hover {
-  background-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
-}
+
+/* This formats the minimum and maximum calories text boxes located in the sidebar and coded in the Search component. */
 .calories-box {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
@@ -55,6 +68,8 @@ label {
   transition: 0.3 all;
   width: 20%;
 }
+
+/* This formats the Search text box located in the sidebar and coded in the Search component. */
 .search-box {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
@@ -64,10 +79,20 @@ label {
   transition: 0.3 all;
   width: 100%;
 }
+
+/* This changes the format of the calories and search text boxes whent he user hovers. */
+.search-box:hover, .calories-box:hover {
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* This formats the phrase located above the Search button located in the sidebar and coded in the Search component. */
 .search-max {
   font-size: 16px;
   font-style: italic;
 }
+
+/* This formats the Search button located in the sidebar and coded in the Search component. */
 .search-button {
   background-color: rgb(184, 2, 2);
   border-radius: 10px;
@@ -77,6 +102,8 @@ label {
   height: 30px;
   width: 50%;
 }
+
+/* This formats the Recipe section located to the right of the sidebar and coded in the RecipeList component. */
 .recipe-section {
   border-left: 2px rgba(21, 21, 21, 0.5) solid;
   display: flex;
@@ -86,6 +113,8 @@ label {
   padding: 20px;
   width: 80%;
 }
+
+/* This formats the recipe card which is used to display the array of recipes retrieved and coded int he RecipeList component. */
 .recipe-card {
   background-color: white;
   border: 2px rgba(140, 70, 140, 0.05) solid;
@@ -98,20 +127,29 @@ label {
   width: 300px;
   word-wrap: normal;
 }
+
+/* This formats the image located on the recipe card and coded in the RecipeList component. */
 .recipe-images {
   width: 100%;
 }
+/* This formats the total calories and total yield sections on the recipe card and coded in the RecipeList component. */
 .recipe-total {
   text-align: left;
 }
+
+/* This formats the ingredient list on the recipe card and coded in the RecipeList component. */
 .recipe-ingredient-list {
   list-style-type: none;
 }
+
+/* This formats the sub-titles on the recipe cards and coded in the RecipeList component. */
 .recipe-header {
   font-weight: 600;
   padding: 0 10px 0 20px;
 }
-.url-section {
+
+/* This formats the link to the external url on the RecipeURL component. */
+.url-section {                
   color: blue;
   padding: 0 20px;
   text-decoration-line: underline;

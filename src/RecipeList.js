@@ -25,7 +25,7 @@ class RecipeList extends Component {
         return (
             <div className='recipe-card'>
                 <img className='recipe-images' src={this.props.recipe.image} alt={this.props.recipe.label} />
-                <Link to ={`recipe/${this.props.index}`} key={this.props.index}> 
+                <Link to ={`recipedetails/${this.props.index}`} key={this.props.index}> 
                     <h2>{this.props.recipe.label}</h2>
                 </Link>
                 <p className='recipe-header'>Ingredients:</p>
@@ -43,7 +43,7 @@ class RecipeList extends Component {
                     {this.props.recipe.yield}
                 </p>
                 <div onClick={this.handleClick}>  
-                    <RecipeDetails recipe={this.state.currentRecipe} />
+                    <RecipeURL recipe={this.state.currentRecipe} />
                 </div>
             </div>
         )

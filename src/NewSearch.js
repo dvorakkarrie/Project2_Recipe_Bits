@@ -1,6 +1,6 @@
 import React from 'react'   
 
-// set up this component as a function that refreshes and hides/displays the New Search link.
+// Set up this component as a function that refreshes and hides/displays the New Search link.
 const NewSearch = (props) => {
     return (
         <div className='reset-link' onClick={props.refreshPage} 
