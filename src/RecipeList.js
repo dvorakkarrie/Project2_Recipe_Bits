@@ -36,11 +36,11 @@ class RecipeList extends Component {
                     </li> ))}
                 </ul>
                 <p className='recipe-total'>
-                    <span className='recipe-header'>Total calories (per yield):</span>
-                    {(Math.floor((this.props.recipe.calories/this.props.recipe.yield)/10))}
+                    <span className='recipe-header'>Total calories (per serving):</span>
+                    {(Math.floor((this.props.recipe.calories/this.props.recipe.yield)))}
                 </p>  
                 <p className='recipe-total'>
-                    <span className='recipe-header'>Total yield (per recipe):</span>
+                    <span className='recipe-header'>Total servings:</span>
                     {this.props.recipe.yield}
                 </p>
                 <div onClick={this.handleClick}>  

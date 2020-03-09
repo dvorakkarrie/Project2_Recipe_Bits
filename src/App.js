@@ -108,15 +108,12 @@ class App extends Component {
 
     return (                                                       
       <div className="App"> 
-        <Header  /> 
-        
-          <div 
-            style={{ width: this.state.isOpen ? '75%' : '100%' }} >
-            {this.state.showList ? recipeList : null}
+        <Header  reset={this.reset} /> 
             <Switch>  
               <Route exact path='/' render={() => <Home 
                 reset={this.reset}
-                isOpen={this.state.isOpen} 
+                isOpen={this.state.isOpen}
+                recipeList={recipeList} 
                 minCalories={this.state.minCalories}
                 maxCalories={this.state.maxCalories}
                 maxRecipes={this.state.maxRecipes}
@@ -125,14 +122,12 @@ class App extends Component {
                 handleChangeMinCalories={this.handleChangeMinCalories}
                 handleChangeMaxCalories={this.handleChangeMaxCalories}
                 handleSubmitSearch={this.handleSubmitSearch}
-
               />} />
               <Route exact path='/recipedetails/:index' 
                 render={(props) => <RecipeDetails recipes={this.state.recipes} {...props} 
-                recipedetails={props.match.params.index} /> } />
+                recipedetails={props.match.params.index} reset={this.reset} /> } />
               <Route path='*' render={() => <Redirect to='/' />} />
             </Switch>
-            </div>
         </div>
     )
   }
