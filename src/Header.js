@@ -1,5 +1,6 @@
 import React from 'react'
 
+// set up this component as a function that displays the web page title.
 const Header = () => {
     return (
         <div className='header'>

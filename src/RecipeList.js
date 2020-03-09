@@ -1,29 +1,33 @@
+// Imported component functionality
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom';
+
+// Imported components
 import RecipeDetails from './RecipeDetails'
 
+// set up RecipeList component as class
 class RecipeList extends Component {
     constructor(props) {
         super(props)
          this.state = {
-             currentRecipe: ''
+             currentRecipe: ''                      // This will hold the recipe object selected by the user.
          }
     }
 
-    handleClick = () => {           // This will display only one selected recipe.
-        console.log(this.props.url)
+    handleClick = () => {                           // This will display only one selected recipe.
         this.setState({
-          currentRecipe: this.props.recipe        // This will assign the selected recipe to the currentRecipe variable.
+          currentRecipe: this.props.recipe          // This will assign the selected recipe to the currentRecipe variable.
         })
-        console.log(this.state.currentRecipe)
-      }
+    }
 
     render() {
-        console.log(this.props.recipe);
-        
+        console.log(this.props)  
         return (
             <div className='recipe-card'>
-                <img className='recipe-images' src={this.props.recipe.image} alt={this.props.recipe.title}></img>
-                <h2>{this.props.recipe.label}</h2>
+                <img className='recipe-images' src={this.props.recipe.image} alt={this.props.recipe.label} />
+                <Link to ={`recipe/${this.props.index}`} key={this.props.index}> 
+                    <h2>{this.props.recipe.label}</h2>
+                </Link>
                 <p className='recipe-header'>Ingredients:</p>
                 <ul>{this.props.recipe.ingredientLines.map((ingredient, index) => (
                     <li className='recipe-ingredient-list' key={index}>
@@ -45,4 +49,5 @@ class RecipeList extends Component {
         )
     }      
 }
+
 export default RecipeList
