@@ -1,8 +1,8 @@
+ - ![Let's Taco About It](https://cloudinary.com/console/c-0f8a4fdacf2146fd4c181123542405/media_library/folders/%2F)
+
 # Project Overview
 
-
 ## Project Description
-
 Create a web page for users to view recipes related to food specified in a search bar.  The user can select a recipe and view the ingredient list and nutrition summary link to view further details.
 
 - [api link](https://www.edamam.com/)
@@ -16,10 +16,10 @@ Create a web page for users to view recipes related to food specified in a searc
 
 Upload images of wireframe to cloudinary and add the link here with a description of the specific wireframe.
 
-- [wireframes](https://res.cloudinary.com/ditj5hmta/image/upload/v1583347510/04Mar20_Recipe-Bits_Wireframes_wdahj2.jpg)
+- ![wireframes](https://res.cloudinary.com/ditj5hmta/image/upload/v1583347510/04Mar20_Recipe-Bits_Wireframes_wdahj2.jpg)
 
 Define the the React components and the architectural design of your app.
-- [react architecture](https://cloudinary.com/console/c-0f8a4fdacf2146fd4c181123542405/media_library/folders/%2F/asset/699b9f50e65b10fa6a73e3e8ce4aca1c/manage)
+- ![react architecture](https://cloudinary.com/console/c-0f8a4fdacf2146fd4c181123542405/media_library/folders/%2F/asset/699b9f50e65b10fa6a73e3e8ce4aca1c/manage)
 
 ### MVP/PostMVP - 5min
 
