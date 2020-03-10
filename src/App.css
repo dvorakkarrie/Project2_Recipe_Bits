@@ -229,21 +229,7 @@ label {
   word-wrap: normal;
 }
 
+/* This formats the nutrition section of the RecipeDetails component. */
 .recipe-details-nutrition-title {
   padding: 0 20px 0 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
