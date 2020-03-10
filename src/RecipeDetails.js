@@ -45,7 +45,6 @@ const RecipeDetails = (props) => {
                         Nutrition:</p>
                     <div>
                         <ul>{recipe.recipe.digest.map((nutrient, index) => (
-                        
                             <li key={index}>
                                 <span className='recipe-details-nutrition-title'>{nutrient.label}:</span>
                                 {Math.floor(nutrient.total/recipe.recipe.yield)} {nutrient.unit}
