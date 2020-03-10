@@ -78,11 +78,12 @@ class App extends Component {
     })
   }
 
-  toggleShowList = () => {
+  toggleShowList = () => {              // This function updated the showList boolean variable used in the Header and RecipeList components.
     this.setState({
       showList: false
     })
   }
+
   reset = () => {                 // This function will clear the input text boxes and refresh the page.
     console.log('New Start clicked!')
     window.location.reload(false)
@@ -108,7 +109,7 @@ class App extends Component {
 
     return (                                                       
       <div className="App"> 
-        <Header  reset={this.reset} /> 
+        <Header  reset={this.reset} showList={this.state.showList} /> 
             <Switch>  
               <Route exact path='/' render={() => <Home 
                 reset={this.reset}
