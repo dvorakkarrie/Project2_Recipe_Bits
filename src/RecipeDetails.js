@@ -2,8 +2,6 @@ import React from 'react'
 
 // Set up this component as a function that displays the recipe details once the user selects a recipe displayed after selecting submit.
 const RecipeDetails = (props) => {
-    console.log(props.recipes[props.match.params.index])
-
     const recipe = props.recipes[props.match.params.index]
 
     return(
