@@ -8,22 +8,30 @@ const RecipeDetails = (props) => {
 
     return(
         <div className='recipe-details-section'>            
+            <div className='recipe-details-top-section'>
+                <img className='recipe-details-images' src={recipe.recipe.image} alt={recipe.recipe.label} />
                 <div>
-                    <img className='recipe-details-images' src={recipe.recipe.image} alt={recipe.recipe.label} />
                     <h1>{recipe.recipe.label}</h1>
-                </div>
-                <div>
-                    
-                    <div className='recipe-total'>
-                        <p><span className='recipe-details-header'>Total Calories:</span>
-                            {(Math.floor((recipe.recipe.calories/recipe.recipe.yield)))}
-                        </p>  
-                        <p><span className='recipe-details-header'>Total Yield:</span>
+                    <p>
+                        <span className='recipe-details-subtitles'>Total Calories:</span>
+                            {(Math.floor(recipe.recipe.calories/recipe.recipe.yield))}
+                    </p>
+                    <p>
+                        <span className='recipe-details-subtitles'>Total Servings:</span>
                             {recipe.recipe.yield}
-                        </p>
+                    </p>
+                    <div className='recipe-details-url'>
+                        <a target='_blank' href={recipe.recipe.url} rel="noopener noreferrer">
+                            Click here for directions
+                        </a>
                     </div>
+                </div>
+            </div>
+            <div className='recipe-details-bottom-section'>
+                <div className='recipe-details-ingredient-section'>
+                    <p className='recipe-details-subtitles'>
+                        {recipe.recipe.ingredientLines.length} - Ingredients:</p>
                     <div>
-                    <p className='recipe-details-header'>{recipe.recipe.ingredientLines.length} - Ingredients:</p>
                     <ul>{recipe.recipe.ingredientLines.map((ingredient, index) => (
                         <li className='recipe-ingredient-list' 
                             key={index}>
@@ -32,11 +40,21 @@ const RecipeDetails = (props) => {
                     </ul>
                     </div>
                 </div>
-                
-                
-                
-                
-    </div>
+                <div className='recipe-details-nutritional-info'>
+                    <p className='recipe-details-subtitles'>
+                        Nutrition:</p>
+                    <div>
+                        <ul>{recipe.recipe.digest.map((nutrient, index) => (
+                        
+                            <li key={index}>
+                                <span className='recipe-details-nutrition-title'>{nutrient.label}:</span>
+                                {Math.floor(nutrient.total/recipe.recipe.yield)} {nutrient.unit}
+                            </li>))}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }   
 export default RecipeDetails

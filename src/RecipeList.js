@@ -22,7 +22,6 @@ class RecipeList extends Component {
     }
 
     render() {
-        console.log(this.props)  
         return (
             <div className='recipe-card'>
                 <img className='recipe-images' src={this.props.recipe.image} alt={this.props.recipe.label} />

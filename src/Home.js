@@ -4,9 +4,9 @@ import React from 'react'
 import NewSearch from './NewSearch'
 import Search from './Search'
 
+// Set up home page component to bring user back to home after search for a recipe.
 const Home = (props) => {
 
-    console.log(props)
     return (
         <div style={{ width: props.isOpen ? '75%' : '100%' }}>
             {props.showList ? props.recipeList : null}
