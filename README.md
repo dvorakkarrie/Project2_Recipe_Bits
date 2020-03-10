@@ -19,7 +19,7 @@ Upload images of wireframe to cloudinary and add the link here with a descriptio
 - ![wireframes](https://res.cloudinary.com/ditj5hmta/image/upload/v1583347510/04Mar20_Recipe-Bits_Wireframes_wdahj2.jpg)
 
 Define the the React components and the architectural design of your app.
-- ![react architecture](https://cloudinary.com/console/c-0f8a4fdacf2146fd4c181123542405/media_library/folders/%2F/asset/699b9f50e65b10fa6a73e3e8ce4aca1c/manage)
+- ![react architecture](https://res.cloudinary.com/ditj5hmta/image/upload/v1583351895/04Mar20_Reactjs_Architecture_ew5ilo.jpg)
 
 ### MVP/PostMVP - 5min
 
