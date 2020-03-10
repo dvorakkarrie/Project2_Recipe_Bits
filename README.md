@@ -89,6 +89,11 @@ Use this section to include a brief code snippet of functionality that you are p
 ## Issues and Resolutions
  Use this section to list of all major issues encountered and their resolution.
 
+- Having issue with setting up an external link #8:  Set up a component which opens a new tab with a recipe from an external href link.
+- Route path is not rendering #10:  Added code to App component to route data to RecipeDetails component.
+- Route to home page is not rendering after rendering the recipe details page #14:  Created Home component and moved logic from App to Home in order to apply Route to homepage.
+
+
 #### SAMPLE.....
 **ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier                                
 **RESOLUTION**: Missing comma after first object in sources {} object
