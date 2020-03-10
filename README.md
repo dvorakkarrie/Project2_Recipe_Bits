@@ -49,14 +49,13 @@ Based on the initial logic defined in the previous sections try and breakdown th
 | Component | Description | 
 | --- | :---: |  
 | App | This will make the initial data pull and include Axios and React Router| 
-| Header | This will render the header |
-| NewSearch | This will reset the screen to the home page |
-| Search | This will render the food search bar and additonal criteria | 
-| RecipeList | This will render the list of recipes the user can individually select |
-
+| Header | This will render the background picture and title in the header section |
+| Home | This will bring the user back to the home page of the application and import the NewSearch and Search components |
+| NewSearch | This will reset the search input data and toggle with the Search input boxes and Submit button |
 | RecipeDetails | This will render the details and image for the selected recipe |
-| Nutrition Summary | This will render the nutrition analysis graph |
-| Nutrition Detail | This will render the nutrition detail list |
+| RecipeList | This will render the list of recipes per the search criteria |
+| RecipeURL | This will render the list of recipes the user can individually select |
+| Search | This will render the food search bar and additonal criteria | 
 
 
 ## Time Frames

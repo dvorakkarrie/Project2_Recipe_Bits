@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link } from 'react-router-dom'
 
-// set up this component as a function that displays the web page title.
+// set up this component as a function that displays the title.
 const Header = (props) => {
     return (
         <div className='header'>
