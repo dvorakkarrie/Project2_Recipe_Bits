@@ -1,4 +1,4 @@
- - ![Let's Taco About It](https://cloudinary.com/console/c-0f8a4fdacf2146fd4c181123542405/media_library/folders/%2F)
+ - ![Let's Taco About It](https://res.cloudinary.com/ditj5hmta/image/upload/v1583798213/taco_gif_qaslme.gif)
 
 # Project Overview
 
