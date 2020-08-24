@@ -76,6 +76,7 @@ class App extends Component {
     this.setState({
       isOpen: !this.state.isOpen,        // This function will close the search side bar and display a New Search link to refresh the page.
     })
+    
   }
 
   toggleShowList = () => {              // This function updated the showList boolean variable used in the Header and RecipeList components.
